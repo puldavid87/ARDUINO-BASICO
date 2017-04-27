@@ -1,0 +1,35 @@
+//descripcion
+//nombre el deber
+
+int led=0; 
+int led1=1; 
+int led2=2;
+int led3=3;
+int led4=4;
+int vector_leds[5]={led,led1,led2,led3,led4};
+int vector_num [5]={0,1,2,3,4};
+int i=0; //contador
+int j=1; //contador
+int k=0;
+int l;
+void setup() {
+  // put your setup code here, to run once:
+for(;i<5;i++){
+pinMode(vector_leds[i],OUTPUT); // INPUT,OUTPUT
+}
+}
+void loop() {
+juego_luces();
+}
+
+void juego_luces (){
+   for(;k<5;k++){  //fork
+    for(;j<5;j=j+2){//forj
+      digitalWrite(vector_leds[j],HIGH);
+      delay(200);
+      digitalWrite(vector_leds[j],LOW);
+      delay(200);
+      }//forj
+      j=1;
+  }//fork
+}
