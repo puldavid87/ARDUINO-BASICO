@@ -1,0 +1,67 @@
+/*PROGRAMA DE LECTURA DE 4 DIPSWITCHS Y RECIBIR SOLO UN ESTADO 
+LOGICO DE ENTRADA*/
+
+
+int i=0; // varaible de configuracion de leds y sws
+int j=0; //variable para revisar la activacion del sw
+int juego=0; // contador para conocer cuantos sw son activados
+int jugar; // seleccion de juego 
+int vector_leds [4]={0,1,2,3}; // pines como salida
+int vector_sw[4]={12,11,10,9}; // pines como entrada
+void setup() {
+  // configuracion de pines
+for(;i<4;i++){
+  pinMode(vector_leds[i],OUTPUT);// LEDS COMO SALIDA
+  pinMode(vector_sw[i],INPUT);
+  }
+}
+
+void loop() {
+  //ciclo de revision de activacion de sw
+  for(;j<4;j++){
+            if(digitalRead(vector_sw[j])==HIGH){// comparacion de activacion
+                juego++; // indicador de numero de sw activados
+                if(juego==1) //comparacion de solo una activacion
+                    jugar=j+1; // seleccion de juego
+                else
+                    jugar=0;   
+            }
+            
+            if(digitalRead(vector_sw[j])==LOW&&jugar-1==j)// comparacion de sw activado con juego seleccionado
+            jugar=0; // varaible de juegos
+            
+    }     
+    j=0;//reinicio de contador
+    juego=0;//reincio de contador
+    //evaluacion de casos por juego
+    switch(jugar){
+      //seleccion de juego #1 
+      case 1:
+      digitalWrite(vector_leds[0],HIGH);
+      delay(200);
+      digitalWrite(vector_leds[0],LOW);
+      delay(200);
+      break;
+      //seleccion de juego #2
+       case 2:
+      digitalWrite(vector_leds[1],HIGH);
+      delay(200);
+      digitalWrite(vector_leds[1],LOW);
+      delay(200);
+      break;
+      //seleccion de juego #3 
+       case 3:
+      digitalWrite(vector_leds[2],HIGH);
+      delay(200);
+      digitalWrite(vector_leds[2],LOW);
+      delay(200);
+      break;
+      //seleccion de juego #4
+      case 4:
+      digitalWrite(vector_leds[3],HIGH);
+      delay(200);
+      digitalWrite(vector_leds[3],LOW);
+      delay(200);
+      break;
+      }
+}
