@@ -1,0 +1,42 @@
+import processing.serial.*;
+Serial port;
+int on=0;
+int conectar=0;
+String dato;
+void setup(){
+size(900,700);
+background(255);
+}
+
+void draw(){
+if(on==0)
+fill(255,0,0);
+else
+fill(0,255,0);
+rect(50,50,100,50);
+//boton conectar
+if(conectar==0)
+fill(255,0,0);
+else
+fill(0,255,0);
+rect(200,50,100,50);
+
+}
+
+void mouseClicked(){
+  if(mouseX>50&&mouseX<150&&mouseY>50&&mouseY<100){
+     on=1-on;
+     if(on==0&&conectar==1)//verificar conexion
+     port.write('A');
+     if(on==1&&conectar==1)//verificar conexion
+     port.write('B');
+   }
+   
+   if(mouseX>200&&mouseX<300&&mouseY>50&&mouseY<100){
+     conectar=1-conectar;
+     if(conectar==1)
+     port= new Serial(this,"COM5",9600); //conectar COM
+     else
+     port.stop(); //Paro conexion
+ }
+}
