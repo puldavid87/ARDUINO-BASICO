@@ -1,0 +1,65 @@
+char dato; // declaracion de variable para recibir dato por cx serial
+char vector[10]; //declaracion de vector para almacenar 10 datos
+int i=0; //contador de almacenamiento
+int j=0; //contador para imprimir vector
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600); //configuracion de puerto serial
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+if(Serial.available()>0){//condicion de recibir un nuevo dato por cx serial
+    dato=Serial.read(); //lectura de dato y almacenamiento del mismo
+     //metodo al recibir cada dato cambia la condicion de switch a evaluar.
+    switch(i){
+      case 0:
+        vector[i]=dato;
+        i++;
+      break;
+      case 1:
+        vector[i]=dato;
+        i++;
+      break;
+      case 2:
+        vector[i]=dato;
+        i++;
+      break;
+      case 3:
+        vector[i]=dato;
+        i++;
+      break;
+      case 4:
+        vector[i]=dato;
+        i++;
+      break;
+      case 5:
+        vector[i]=dato;
+        i++;
+      break;
+      case 6:
+        vector[i]=dato;
+        i++;
+      break;
+      case 7:
+        vector[i]=dato;
+        i++;
+      break;
+      case 8:
+        vector[i]=dato;
+        i++;
+      break;
+      case 9:
+        vector[i]=dato;
+         vector[i]=dato;
+         for(;j<=i;j++){
+            Serial.print(vector[j]);
+            Serial.print(',');
+            }
+       Serial.println(' ');
+       j=0;
+       i=0;
+      break;
+      }
+  }
+}
